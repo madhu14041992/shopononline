@@ -7,7 +7,6 @@
 <spring:url var="images" value="/resources/images" />
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
-
 <!DOCTYPE html>
 <html lang="en">
 
