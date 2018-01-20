@@ -7,4 +7,6 @@ import web.shop.shoponlinebackend.dto.Category;
 public interface CategoryDAO {
 
 	List<Category> listOfCategory();
+
+	Category getCategoryById(int id);
 }
