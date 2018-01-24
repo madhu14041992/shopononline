@@ -10,7 +10,7 @@ xmlns:context="http://www.springframework.org/schema/context"
    http://www.springframework.org/schema/mvc/spring-mvc.xsd
    ">
 <context:component-scan base-package="web.shop.shoponlinefe.controller"/>
-<context:component-scan base-package="web.shop.shoponlinebackend.daoimpl"/>
+<context:component-scan base-package="web.shop.shoponlinebackend"/>
 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 <!-- <property name="viewClass" value=""></property> -->
 <property name="prefix" value="/WEB-INF/views/"/>

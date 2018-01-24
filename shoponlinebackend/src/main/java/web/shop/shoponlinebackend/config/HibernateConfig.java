@@ -14,15 +14,16 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan({"web.shop.shoponlinebackend.dto"})
+@ComponentScan(basePackages={"web.shop.shoponlinebackend.dto"})
 @EnableTransactionManagement
 public class HibernateConfig {
+	
 
 	//change the below information based on your DBMS requirement
 	private final static String DATABASE_URL="jdbc:h2:tcp://localhost/~/shopononline";
-	private final static String DATABASE_USERNAME="root";
+	private final static String DATABASE_DRIVER="org.h2.Driver";
 	private final static String DATABASE_DIALECT="org.hibernate.dialect.H2Dialect";
-	private final static String DATABASE_DRIVER="org.h2.driver";
+	private final static String DATABASE_USERNAME="root";
 	private final static String DATABASE_PASSWORD="";
 	
 	//DataSource Bean will be available
@@ -31,8 +32,8 @@ public class HibernateConfig {
 		BasicDataSource dataSource=new BasicDataSource();
 		//providing database connection information
 		dataSource.setDriverClassName(DATABASE_DRIVER);
-		dataSource.setUsername(DATABASE_USERNAME);
 		dataSource.setUrl(DATABASE_URL);
+		dataSource.setUsername(DATABASE_USERNAME);
 		dataSource.setPassword(DATABASE_PASSWORD);
 				
 		return dataSource;  
@@ -58,8 +59,8 @@ public class HibernateConfig {
 	//HibernateTransactionManager bean
 	
 	@Bean
-	public HibernateTransactionManager getTransactionManager(SessionFactory sf){
-		HibernateTransactionManager transactionManager=new HibernateTransactionManager(sf);
+	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory){
+		HibernateTransactionManager transactionManager=new HibernateTransactionManager(sessionFactory);
 		return transactionManager;
 	}
 	
